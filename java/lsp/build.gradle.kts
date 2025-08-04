@@ -76,9 +76,5 @@ dependencies {
   implementation(libs.androidx.core.ktx)
   implementation(libs.common.kotlin)
   
-  testImplementation(projects.testing.commonTest)
-  testImplementation(projects.testing.lspTest)
 
-  androidTestImplementation(projects.testing.androidTest)
-  androidTestImplementation(projects.utilities.shared)
 }

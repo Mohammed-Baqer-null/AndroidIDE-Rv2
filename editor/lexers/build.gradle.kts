@@ -40,6 +40,4 @@ dependencies {
   
   implementation(libs.common.jkotlin)
 
-  testImplementation(libs.tests.junit)
-  testImplementation(libs.tests.google.truth)
 }

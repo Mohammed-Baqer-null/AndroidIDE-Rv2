@@ -53,8 +53,4 @@ dependencies {
   implementation(projects.utilities.xmlInflater)
   implementation(projects.xml.lsp)
 
-  testImplementation(libs.tests.junit)
-  testImplementation(libs.tests.google.truth)
-  testImplementation(libs.tests.robolectric)
-  testImplementation(libs.tests.mockito.kotlin)
 }

@@ -44,9 +44,4 @@ dependencies {
   implementation(libs.androidx.core.ktx)
   implementation(libs.google.auto.service.annotations)
 
-  testImplementation(projects.core.lspApi)
-  testImplementation(projects.testing.unitTest)
-  testImplementation(projects.testing.gradleToolingTest)
-  testImplementation(projects.utilities.templatesApi)
-  testImplementation(projects.utilities.preferences)
 }

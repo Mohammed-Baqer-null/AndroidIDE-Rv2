@@ -52,7 +52,4 @@ dependencies {
     api(projects.utilities.flashbar)
     api(projects.utilities.shared)
 
-    testImplementation(libs.tests.junit)
-    testImplementation(libs.tests.google.truth)
-    testImplementation(libs.tests.robolectric)
 }

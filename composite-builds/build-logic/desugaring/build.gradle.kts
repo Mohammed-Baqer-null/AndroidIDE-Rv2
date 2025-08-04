@@ -25,8 +25,6 @@ dependencies {
 
   compileOnly(libs.android.gradle.plugin)
 
-  testImplementation(libs.tests.junit)
-  testImplementation(libs.tests.google.truth)
 }
 
 gradlePlugin {

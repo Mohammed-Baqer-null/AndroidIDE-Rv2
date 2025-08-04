@@ -44,6 +44,4 @@ dependencies {
 
     implementation(projects.utilities.buildInfo)
 
-    testImplementation(libs.tests.junit)
-    testImplementation(libs.tests.google.truth)
 }

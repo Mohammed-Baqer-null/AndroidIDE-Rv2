@@ -30,20 +30,10 @@ plugins {
 
 description = "Gradle Plugin for projects that are built with AndroidIDE"
 
-tasks.named<Test>("test") {
-  useJUnitPlatform()
-}
-
 configurations {
   val androidBuildTool = create("androidBuildTool")
 
   getByName("compileOnly") {
-    extendsFrom(androidBuildTool)
-  }
-  getByName("testImplementation") {
-    extendsFrom(androidBuildTool)
-  }
-  findByName("integrationTestImplementation")?.run {
     extendsFrom(androidBuildTool)
   }
 }
@@ -54,13 +44,6 @@ dependencies {
 
   // use the AGP APIs from the minimum supported AGP version
   add("androidBuildTool", "com.android.tools.build:gradle:${AGP_VERSION_MINIMUM}")
-
-  testImplementation(gradleTestKit())
-  testImplementation(libs.tests.junit.jupiter)
-  testImplementation(libs.tests.google.truth)
-  testImplementation(projects.utilities.shared)
-
-  testRuntimeOnly(libs.tests.junit.platformLauncher)
 }
 
 gradlePlugin {

@@ -60,6 +60,4 @@ dependencies {
     implementation(projects.utilities.buildInfo)
     implementation(projects.utilities.preferences)
 
-    testImplementation(projects.testing.unitTest)
-    testImplementation(projects.testing.androidTest)
 }

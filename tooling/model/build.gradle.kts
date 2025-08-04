@@ -36,6 +36,7 @@ dependencies {
   implementation(projects.logging.logger)
 }
 
+/* 未知任务，未发现相关引用，先注释
 tasks.register < Copy > ("copyToTestDir") {
   from (project.layout.buildDirectory.file("libs/tooling-api-model.jar"))
   into (project.rootProject.mkdir ("tests/test-home/.androidide/init"))
@@ -48,3 +49,4 @@ project.tasks.jar {
   finalizedBy ("copyToTestDir")
   outputs.upToDateWhen { false }
 }
+*/

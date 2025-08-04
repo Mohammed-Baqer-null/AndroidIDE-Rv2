@@ -61,12 +61,6 @@ android {
 
     lint.disable += "ProtectedPermissions"
 
-    testOptions {
-        unitTests {
-            isIncludeAndroidResources = true
-        }
-    }
-
     packaging.jniLibs.useLegacyPackaging = true
 }
 
@@ -89,7 +83,6 @@ dependencies {
     implementation(projects.termux.shared)
     implementation(projects.utilities.preferences)
 
-    testImplementation(projects.testing.unitTest)
 }
 
 tasks.register("versionName") {

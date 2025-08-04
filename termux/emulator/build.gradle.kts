@@ -42,19 +42,8 @@ android {
             path = file("src/main/jni/Android.mk")
         }
     }
-
-    testOptions {
-        unitTests.isReturnDefaultValues = true
-    }
-}
-
-tasks.withType(Test::class.java) {
-    testLogging {
-        events("started", "passed", "skipped", "failed")
-    }
 }
 
 dependencies {
     implementation(libs.androidx.annotation)
-    testImplementation(projects.testing.unitTest)
 }

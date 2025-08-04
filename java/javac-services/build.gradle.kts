@@ -45,7 +45,4 @@ dependencies {
     implementation(projects.core.common)
     implementation(projects.logging.logger)
     
-    testImplementation(libs.tests.junit)
-    testImplementation(libs.tests.google.truth)
-    testImplementation(libs.tests.robolectric)
 }

@@ -37,5 +37,4 @@ dependencies {
 
     implementation(projects.core.resources)
 
-    testImplementation(projects.testing.unitTest)
 }

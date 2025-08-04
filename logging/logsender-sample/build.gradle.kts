@@ -43,7 +43,4 @@ dependencies {
   implementation(libs.androidx.constraintlayout)
   implementation(libs.google.material)
 
-  testImplementation(libs.tests.junit)
-  testImplementation(libs.tests.robolectric)
-  testImplementation(libs.tests.google.truth)
 }

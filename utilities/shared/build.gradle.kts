@@ -34,6 +34,4 @@ dependencies {
     implementation(projects.logging.logger)
     implementation(projects.utilities.buildInfo)
 
-    testImplementation(libs.tests.google.truth)
-    testImplementation(libs.tests.junit)
 }

@@ -43,7 +43,4 @@ dependencies {
     compileOnly("org.fusesource.jansi:jansi:+")
     compileOnly("jakarta.mail:jakarta.mail-api:+")
     compileOnly("jakarta.servlet:jakarta.servlet-api:+")
-
-    testCompileOnly("org.eclipse.angus:angus-mail:+")
-    testCompileOnly("org.mockito:mockito-core:+")
 }

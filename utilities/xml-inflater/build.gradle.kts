@@ -43,7 +43,4 @@ dependencies {
   implementation(projects.xml.aaptcompiler)
   implementation(projects.xml.utils)
 
-  testImplementation(projects.core.projects)
-  testImplementation(projects.testing.commonTest)
-  testImplementation(projects.testing.gradleToolingTest)
 }

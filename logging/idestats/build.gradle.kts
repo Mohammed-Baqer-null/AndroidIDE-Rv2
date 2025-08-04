@@ -42,12 +42,4 @@ dependencies {
   implementation(projects.utilities.buildInfo)
   implementation(projects.utilities.preferences)
 
-  androidTestImplementation(libs.tests.androidx.junit)
-  androidTestImplementation(libs.tests.androidx.test.core)
-  androidTestImplementation(libs.tests.androidx.test.runner)
-  androidTestImplementation(libs.tests.androidx.test.rules)
-  androidTestImplementation(libs.tests.androidx.work.testing)
-  androidTestImplementation(libs.androidx.work)
-  androidTestImplementation(libs.androidx.work.ktx)
-  androidTestImplementation(libs.tests.google.truth)
 }

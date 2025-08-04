@@ -49,8 +49,4 @@ dependencies {
     api(libs.google.protobuf)
     api(libs.composite.layoutlibApi)
     
-    testImplementation(libs.tests.junit)
-    testImplementation(libs.tests.robolectric)
-    testImplementation(libs.tests.google.truth)
-    testImplementation(projects.utilities.shared)
 }

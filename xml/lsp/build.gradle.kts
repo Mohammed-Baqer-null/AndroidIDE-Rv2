@@ -55,11 +55,6 @@ dependencies {
     implementation(libs.common.kotlin)
     implementation(libs.google.material)
 
-    testImplementation(projects.core.actions)
-    testImplementation(projects.core.projects)
-    testImplementation(projects.tooling.api)
-    testImplementation(projects.testing.commonTest)
-    testImplementation(projects.testing.lspTest)
 
     compileOnly(projects.core.common)
     compileOnly(libs.common.antlr4)

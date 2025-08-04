@@ -39,5 +39,4 @@ dependencies {
   api(projects.logging.logger)
   api(projects.utilities.shared)
 
-  testImplementation(projects.testing.unitTest)
 }
