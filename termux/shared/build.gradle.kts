@@ -23,17 +23,9 @@ plugins {
     id("kotlin-android")
 }
 
-
-
 android {
     namespace = "com.termux.shared"
-    ndkVersion = BuildConfig.ndkVersion
-
-    externalNativeBuild {
-        ndkBuild {
-            path = file("src/main/cpp/Android.mk")
-        }
-    }
+    packaging.jniLibs.useLegacyPackaging = true
 }
 
 dependencies {
@@ -59,5 +51,4 @@ dependencies {
     implementation(projects.termux.view)
     implementation(projects.utilities.buildInfo)
     implementation(projects.utilities.preferences)
-
 }

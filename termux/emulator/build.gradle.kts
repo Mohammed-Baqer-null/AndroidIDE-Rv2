@@ -23,25 +23,9 @@ plugins {
     id("kotlin-android")
 }
 
-
-
 android {
     namespace = "com.termux.emulator"
-    ndkVersion = BuildConfig.ndkVersion
-
-    defaultConfig {
-        externalNativeBuild {
-            ndkBuild {
-                cFlags += arrayOf("-std=c11", "-Wall", "-Wextra", "-Werror", "-Os", "-fno-stack-protector", "-Wl,--gc-sections")
-            }
-        }
-    }
-
-    externalNativeBuild {
-        ndkBuild {
-            path = file("src/main/jni/Android.mk")
-        }
-    }
+    packaging.jniLibs.useLegacyPackaging = true
 }
 
 dependencies {

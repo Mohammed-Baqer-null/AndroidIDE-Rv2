@@ -23,11 +23,8 @@ plugins {
     id("kotlin-android")
 }
 
-
-
 android {
     namespace = "com.termux.view"
-    ndkVersion = BuildConfig.ndkVersion
 }
 
 dependencies {
@@ -36,5 +33,4 @@ dependencies {
     implementation(libs.androidx.annotation)
 
     implementation(projects.core.resources)
-
 }
