@@ -19,6 +19,9 @@
   <string name="reset">重置</string>
   <string name="app_logs">应用日志</string>
   <string name="ide_logs">IDE 日志</string>
+  <!-- AndroidIDE-R -->
+  <string name="discussions_on_qq">在 QQ 上讨论</string>
+
   <!-- LSP, Diagnostics & Completions -->
   <string name="get_started">开始使用</string>
   <string name="msg_cannot_perform_fix">无法执行快速修复</string>

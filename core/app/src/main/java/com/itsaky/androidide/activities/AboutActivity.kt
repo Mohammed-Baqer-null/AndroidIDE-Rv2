@@ -66,6 +66,7 @@ class AboutActivity : EdgeToEdgeIDEActivity() {
     private val ACTION_TG_GROUP = id++
     private val ACTION_CONTRIBUTE = id++
     private val ACTION_CONTRIBUTORS = id++
+    private val ACTION_QQ_GROUP = id++
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -120,6 +121,10 @@ class AboutActivity : EdgeToEdgeIDEActivity() {
       ACTION_TG_CHANNEL -> app.openTelegramChannel()
       ACTION_CONTRIBUTE -> app.openUrl(BaseApplication.CONTRIBUTOR_GUIDE_URL)
       ACTION_CONTRIBUTORS -> startActivity(Intent(this, ContributorsActivity::class.java))
+      ACTION_QQ_GROUP -> {
+        ClipboardUtils.copyText(BaseApplication.QQ_GROUP_NUMBER)
+        flashSuccess(R.string.copied)
+      }
     }
   }
 
@@ -159,6 +164,16 @@ class AboutActivity : EdgeToEdgeIDEActivity() {
           R.drawable.ic_telegram,
           R.string.official_tg_channel,
           BaseApplication.TELEGRAM_CHANNEL_URL
+        )
+      )
+      // add the qq item
+      add(
+        createSimpleIconTextItem(
+          this@AboutActivity,
+          ACTION_QQ_GROUP,
+          R.drawable.ic_qq,
+          R.string.discussions_on_qq,
+          BaseApplication.QQ_GROUP_NUMBER
         )
       )
     }

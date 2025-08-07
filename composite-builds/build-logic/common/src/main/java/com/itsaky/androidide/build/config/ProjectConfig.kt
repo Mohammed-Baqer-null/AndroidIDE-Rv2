@@ -23,15 +23,18 @@ import org.gradle.api.Project
 object ProjectConfig {
 
   const val REPO_HOST = "github.com"
-  const val REPO_OWNER = "AndroidIDEOfficial"
-  const val REPO_NAME = "AndroidIDE"
+  // const val REPO_OWNER = "AndroidIDEOfficial"
+  const val REPO_OWNER = "evil-hero"
+  // const val REPO_NAME = "AndroidIDE"
+  const val REPO_NAME = "AndroidIDE-R"
   const val REPO_URL = "https://$REPO_HOST/$REPO_OWNER/$REPO_NAME"
   const val SCM_GIT =
     "scm:git:git://$REPO_HOST/$REPO_OWNER/$REPO_NAME.git"
   const val SCM_SSH =
     "scm:git:ssh://git@$REPO_HOST/$REPO_OWNER/$REPO_NAME.git"
 
-  const val PROJECT_SITE = "https://m.androidide.com"
+  // const val PROJECT_SITE = "https://m.androidide.com"
+  const val PROJECT_SITE = REPO_URL
 }
 
 private var shouldPrintNotAGitRepoWarning = true
@@ -43,7 +46,7 @@ val Project.simpleVersionName: String
     val simpleVersion = version
 
     if (simpleVersion == null) {
-      return "1.0.0-beta-R-1.0"
+      return "1.0.0-beta-rev-1.0"
     }
 
     if (shouldPrintVersionName) {

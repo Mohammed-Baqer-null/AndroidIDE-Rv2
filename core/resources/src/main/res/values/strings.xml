@@ -23,6 +23,8 @@
   <string name="reset">Reset</string>
   <string name="app_logs">App Logs</string>
   <string name="ide_logs">IDE Logs</string>
+  <!-- AndroidIDE-R -->
+  <string name="discussions_on_qq">Discussions on QQ</string>
 
   <!-- LSP, Diagnostics & Completions -->
   <string name="get_started">Get started</string>
