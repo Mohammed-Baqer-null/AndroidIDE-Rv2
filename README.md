@@ -4,14 +4,14 @@
 
 <h2 align="center"><b>AndroidIDE</b></h2>
 <p align="center">
-  An IDE to develop real, Gradle-based Android applications on Android devices.
+  AndroidIDE 是一个运行在安卓设备上的应用程序开发工具，支持完整的 Android SDK 和 Gradle。
 <p><br>
 
 <p align="center">
 <!-- Latest release -->
-<img src="https://img.shields.io/github/v/release/AndroidIDEOfficial/AndroidIDE?include_prereleases&amp;label=latest%20release" alt="Latest release">
+<img src="https://img.shields.io/github/v/release/evil-hero/AndroidIDE-R?include_prereleases&amp;label=latest%20release" alt="Latest release">
 <!-- Build and test -->
-<img src="https://github.com/AndroidIDEOfficial/AndroidIDE/actions/workflows/build.yml/badge.svg" alt="Builds and tests">
+<img src="https://github.com/evil-hero/AndroidIDE-R/actions/workflows/build.yml/badge.svg" alt="Builds and tests">
 <!-- CodeFactor -->
 <img src="https://www.codefactor.io/repository/github/androidideofficial/androidide/badge/main" alt="CodeFactor">
 <!-- Crowdin -->
@@ -20,104 +20,58 @@
 <img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License"></p>
 
 <p align="center">
-  <a href="https://docs.androidide.com/">Explore the docs »</a> &nbsp; &nbsp;
+  <a href="docs/README-SOURCE.md">查看官方文档 »</a> &nbsp; &nbsp;
+  <a href="docs/README-EN.md">English Docs »</a> &nbsp; &nbsp;
 </p>
 
 <p align="center">
-  <a href="https://github.com/AndroidIDEOfficial/AndroidIDE/issues/new?labels=bug&template=BUG.yml&title=%5BBug%5D%3A+">Report a bug</a> &nbsp; &#8226; &nbsp;
-  <a href="https://github.com/AndroidIDEOfficial/AndroidIDE/issues/new?labels=feature&template=FEATURE.yml&title=%5BFeature%5D%3A+">Request a feature</a> &nbsp; &#8226; &nbsp;
-  <a href="https://t.me/androidide_discussions">Join us on Telegram</a>
+  <a href="https://github.com/evil-hero/AndroidIDE-R/issues/new?labels=bug&template=BUG.yml&title=%5BBug%5D%3A+">提交 Bug</a> &nbsp; &#8226; &nbsp;
+  <a href="https://github.com/evil-hero/AndroidIDE-R/issues/new?labels=feature&template=FEATURE.yml&title=%5BFeature%5D%3A+">新功能建议</a> &nbsp; &#8226; &nbsp;
+  <a href="https://t.me/androidide_r_discussions">加入TG群组</a>
 </p>
 
 > [!WARNING]
 > 
-> THIS PROJECT IS NOT MAINTAINED ANYMORE.
+> 暂时仅支持`arm64`架构的安卓设备安装。
 
-## Features
+## 功能速览
 
-- [x] Gradle support.
-- [x] `JDK 11` and `JDK 17` available for use.
-- [x] Terminal with necessary packages.
-- [x] Custom environment variables (for Build & Terminal).
-- [x] SDK Manager (Available via terminal).
-- [x] API information for classes and their members (since, removed, deprecated).
-- [x] Log reader (shows your app's logs in real-time)
-- [ ] Language servers
-    - [x] Java
-    - [x] XML
-    - [ ] Kotlin
-- [ ] UI Designer
-    - [x] Layout inflater
-    - [x] Resolve resource references
-    - [x] Auto-complete resource values when user edits attributes using the attribute editor
-    - [x] Drag & Drop
-    - [x] Visual attribute editor
-    - [x] Android Widgets
-- [ ] String Translator
-- [ ] Asset Studio (Drawable & Icon Maker)
-- [x] Git
 
-## Installation
+## 安装应用
 
-[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.svg"
-    alt="Get it on F-Droid"
-    height="80">](https://f-droid.org/packages/com.itsaky.androidide)
-[<img src="https://github.com/Kunzisoft/Github-badge/raw/main/get-it-on-github.svg"
-    alt="Get it on F-Droid"
-    height="80">](https://github.com/AndroidIDEOfficial/AndroidIDE/releases)
+- [_GitHub Releases_](https://github.com/evil-hero/AndroidIDE-R/releases)
 
-> _Please install AndroidIDE from trusted sources only i.e._
-> - [_The AndroidIDE website_](https://androidide.com)
-> - [_GitHub Releases_](https://github.com/AndroidIDEOfficial/AndroidIDE/releases)
-> - [_GitHub Actions_](https://github.com/AndroidIDEOfficial/AndroidIDE/actions?query=branch%3Adev+event%3Apush)
-> - [_F-Droid_](https://f-droid.org/packages/com.itsaky.androidide/)
+## 应用限制
 
-- Download the AndroidIDE APK from the mentioned trusted sources.
-- Follow the
-  instructions [here](https://docs.androidide.com/tutorials/get-started.html) to
-  install the build tools.
+- 要在 AndroidIDE 中开发项目，您的项目必须使用 Android Gradle 插件 v7.2.0 或更高版本。使用旧版 AGP 的项目必须迁移到较新版本。
 
-## Limitations
+- SDK Manager 已经包含在 Android SDK 中，可通过 AndroidIDE 的终端访问。但是，您无法使用它来安装某些工具（例如 NDK）。
 
-- For working with projects in AndroidIDE, your project must use Android Gradle Plugin v7.2.0 or
-  newer. Projects with older AGP must be migrated to newer versions.
-- SDK Manager is already included in Android SDK and is accessible in AndroidIDE via its Terminal.
-  But, you cannot use it to install some tools (like NDK) because those tools are not built for
-  Android.
-- No official NDK support because we haven't built the NDK for Android.
+- 没有官方的 NDK 支持，因为有很多人使用 NDK 编译外挂程序。如果您真的需要 NDK 环境，可以考虑使用 Termux 搭建。
 
-The app is still being developed actively. It's in beta stage and may not be stable. if you have any
-issues using the app, please let us know.
+该应用仍在积极开发中。目前处于测试阶段，可能不稳定。如果您在使用该应用时遇到任何问题，请告知我们。
 
-## Contributing
+## 贡献指南
 
-See the [contributing guide](./CONTRIBUTING.md).
+请查看 [贡献指南](./CONTRIBUTING.md)。
 
-For translations, visit the [Crowdin project page](https://crowdin.com/project/androidide).
+> [!NOTE]
+> 
+> 暂不进行翻译工作。
 
-## Thanks to
+## 鸣谢
 
-- [Rosemoe](https://github.com/Rosemoe) for the
-  awesome [CodeEditor](https://github.com/Rosemoe/sora-editor)
-- [Termux](https://github.com/termux) for [Terminal Emulator](https://github.com/termux/termux-app)
+- [Rosemoe](https://github.com/Rosemoe) 的优秀代码编辑器 [CodeEditor](https://github.com/Rosemoe/sora-editor)
+- [Termux](https://github.com/termux) 的超级终端 [Terminal Emulator](https://github.com/termux/termux-app)
 - [Bogdan Melnychuk](https://github.com/bmelnychuk)
-  for [AndroidTreeView](https://github.com/bmelnychuk/AndroidTreeView)
-- [George Fraser](https://github.com/georgewfraser) for
-  the [Java Language Server](https://github.com/georgewfraser/java-language-server)
+  的树状组件 [AndroidTreeView](https://github.com/bmelnychuk/AndroidTreeView)
+- [George Fraser](https://github.com/georgewfraser) 的 Java  语言服务器 [Java Language Server](https://github.com/georgewfraser/java-language-server)
 
-Thanks to all the developers who have contributed to this project.
+感谢所有为该项目做出贡献的开发人员。
 
-<p>This project is supported by:</p>
-<p>
-  <a href="https://m.do.co/c/54add371d1d7">
-    <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg" width="201px">
-  </a>
-</p>
+## 联系我们
 
-## Contact Us
-
-- [Website](https://m.androidide.com)
-- [Telegram](https://t.me/androidide_discussions)
+- [Telegram](https://t.me/androidide_r_discussions)
 
 ## License
 
@@ -136,5 +90,4 @@ You should have received a copy of the GNU General Public License
 along with AndroidIDE.  If not, see <https://www.gnu.org/licenses/>.
 ```
 
-Any violations to the license can be reported either by opening an issue or writing a mail to us
-directly.
+任何违反许可证的行为都可以通过任何方式告知我们。
