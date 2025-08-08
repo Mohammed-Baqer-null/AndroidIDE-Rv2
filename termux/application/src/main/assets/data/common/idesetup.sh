@@ -343,6 +343,9 @@ if [ "$with_cmdline" = true ]; then
   download_comp "Command-line tools" ".cmdline_tools" "$install_dir/android-sdk" "cmdline-tools"
 fi
 
+# Install platforms/android-34
+sdkmanager "platforms;android-34"
+
 # Install JDK
 print_info "Installing package: 'openjdk-$jdk_version'"
 install_packages "openjdk-$jdk_version" && print_info "JDK $jdk_version has been installed."

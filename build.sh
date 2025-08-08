@@ -1,18 +1,13 @@
 #!/usr/bin/env bash
 
-# 检查参数数量
-if [ "$#" -ne 2 ]; then
-  echo "Usage: $0 <module> <variant>"
-  echo "Eg: $0 core:app Debug"
-  exit 1
-fi
+function gw() {
+    local file="./gradlew"
+    if [[ -f "$file" ]]; then
+        bash "$file" -Pandroid.aapt2FromMavenOverride="$HOME/.androidide/aapt2" "$@" 2>&1 | tee ./build.log
+    else
+        echo "Invoke this command from a project's root directory."
+        return 1
+    fi
+}
 
-MODULE="$1"
-VARIANT="$2"
-
-# 构造命令
-CMD="gradlew :${MODULE}:assemble${VARIANT}"
-
-echo "Exec: $CMD"
-# 执行构建并保存日志
-$CMD 2>&1 | tee build.log
+gw "$@"

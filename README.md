@@ -20,14 +20,14 @@
 <img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License"></p>
 
 <p align="center">
-  <a href="docs/README-SOURCE.md">查看官方文档 »</a> &nbsp; &nbsp;
-  <a href="docs/README-EN.md">English Docs »</a> &nbsp; &nbsp;
+  <a href="https://github.com/AndroidIDEOfficial/AndroidIDE/">查看官方文档 »</a> &nbsp; &#8226; &nbsp;
+  <a href="docs/en/README.md">English Docs »</a>
 </p>
 
 <p align="center">
   <a href="https://github.com/evil-hero/AndroidIDE-R/issues/new?labels=bug&template=BUG.yml&title=%5BBug%5D%3A+">提交 Bug</a> &nbsp; &#8226; &nbsp;
   <a href="https://github.com/evil-hero/AndroidIDE-R/issues/new?labels=feature&template=FEATURE.yml&title=%5BFeature%5D%3A+">新功能建议</a> &nbsp; &#8226; &nbsp;
-  <a href="https://t.me/androidide_r_discussions">加入TG群组</a>
+  <a href="https://t.me/androidide_r_ug">加入TG群组</a>
 </p>
 
 > [!WARNING]
@@ -36,6 +36,13 @@
 
 ## 功能速览
 
+如果您需要查看原官方支持的功能，请查阅官方文档。
+
+- [ ] 使用`Shizuku`进行安装
+- [ ] 自定义快捷代码
+- [ ] 日志过滤
+- [ ] 图标生成与管理
+- [ ] UI设计器
 
 ## 安装应用
 
@@ -51,9 +58,13 @@
 
 该应用仍在积极开发中。目前处于测试阶段，可能不稳定。如果您在使用该应用时遇到任何问题，请告知我们。
 
+## 构建指南
+
+请查看 [构建指南](./docs/zh-cn/BUILD.md)。
+
 ## 贡献指南
 
-请查看 [贡献指南](./CONTRIBUTING.md)。
+请查看 [贡献指南](./docs/zh-cn/CONTRIBUTING.md)。
 
 > [!NOTE]
 > 
@@ -71,7 +82,7 @@
 
 ## 联系我们
 
-- [Telegram](https://t.me/androidide_r_discussions)
+- [Telegram](https://t.me/androidide_r_ug)
 
 ## License
 

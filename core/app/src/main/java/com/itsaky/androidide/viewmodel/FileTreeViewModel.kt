@@ -43,7 +43,7 @@ internal class FileTreeViewModel : ViewModel() {
         return@executeAsync tree.saveState
       }) { result ->
         runOnUiThread {
-          treeState.value = result
+          treeState.value = result ?: "null"
         }
       }
     }
