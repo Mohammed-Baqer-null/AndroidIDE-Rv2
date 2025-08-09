@@ -37,11 +37,12 @@ public class BaseApplication extends Application {
   public static final String NOTIFICATION_GRADLE_BUILD_SERVICE = "17571";
   public static final String TELEGRAM_GROUP_URL = "https://t.me/androidide_r_ug";
   public static final String TELEGRAM_CHANNEL_URL = "https://t.me/AndroidIDE_R";
-  public static final String SPONSOR_URL = BuildInfo.PROJECT_SITE + "/donate";
+  // public static final String SPONSOR_URL = BuildInfo.PROJECT_SITE + "/donate";
+  public static final String SPONSOR_URL = BuildInfo.REPO_URL;
   public static final String DOCS_URL = "https://docs.androidide.com";
   public static final String CONTRIBUTOR_GUIDE_URL =
-      BuildInfo.REPO_URL + "/blob/dev/CONTRIBUTING.md";
-  public static final String EMAIL = "318943080@qq.com";
+      BuildInfo.REPO_URL + "/blob/dev/docs/en/CONTRIBUTING.md";
+  public static final String EMAIL = "mortals-coffce@foxmail.com";
   public static final String QQ_GROUP_NUMBER = "769660322";
   private static BaseApplication instance;
   private PreferenceManager mPrefsManager;
