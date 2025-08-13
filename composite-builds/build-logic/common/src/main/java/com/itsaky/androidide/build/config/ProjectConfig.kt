@@ -24,7 +24,7 @@ object ProjectConfig {
 
   const val REPO_HOST = "github.com"
   // const val REPO_OWNER = "AndroidIDEOfficial"
-  const val REPO_OWNER = "evil-hero"
+  const val REPO_OWNER = "MiyazKaori"
   // const val REPO_NAME = "AndroidIDE"
   const val REPO_NAME = "AndroidIDE-R"
   const val REPO_URL = "https://$REPO_HOST/$REPO_OWNER/$REPO_NAME"
