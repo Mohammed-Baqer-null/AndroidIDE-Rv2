@@ -162,7 +162,7 @@ fun Project.configureAndroidModule(
       // from AGP 8.4.0 onwards, there are some behavioral changes in R8
       // enabling R8 on library projects results in missing class errors
       // see https://issuetracker.google.com/issues/338411137#comment11
-      isMinifyEnabled = isAppModule
+      isMinifyEnabled = false
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
     }
 

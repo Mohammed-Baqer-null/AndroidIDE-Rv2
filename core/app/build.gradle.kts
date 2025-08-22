@@ -56,7 +56,7 @@ android {
 
   buildTypes {
     release {
-      isShrinkResources = true
+      isShrinkResources = false
     }
   }
 

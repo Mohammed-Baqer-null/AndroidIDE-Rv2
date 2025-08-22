@@ -177,8 +177,12 @@ class JavaLanguageServer : ILanguageServer {
     ) { cachedCompletion: CachedCompletion ->
       updateCachedCompletion(cachedCompletion)
     }
+    
+    val result = completionProvider.complete(params)
+    
+    // log.warn(result.toString())
 
-    return completionProvider.complete(params)
+    return result
   }
 
   override suspend fun findReferences(params: ReferenceParams): ReferenceResult {
