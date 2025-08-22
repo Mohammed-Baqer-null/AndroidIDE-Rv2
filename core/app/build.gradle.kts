@@ -104,6 +104,8 @@ dependencies {
   implementation(libs.google.auto.service.annotations)
   implementation(libs.google.gson)
   implementation(libs.google.guava)
+  
+  implementation("com.github.MiyazKaori:SilentInstaller:1.0.0-alpha")
 
   // Git
   implementation(libs.git.jgit)

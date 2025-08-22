@@ -21,6 +21,8 @@
   <string name="ide_logs">IDE 日志</string>
   <!-- AndroidIDE-R -->
   <string name="discussions_on_qq">在 QQ 上讨论</string>
+  <string name="idepref_installViaShizuku_title">通过 Shizuku 安装</string>
+  <string name="idepref_installViaShizuku_summary">如果启用，IDE 将会通过 Shizuku 进行静默安装，请确保您已经安装并激活了 Shizuku</string>
 
   <!-- LSP, Diagnostics & Completions -->
   <string name="get_started">开始使用</string>
@@ -425,6 +427,7 @@
   <string name="title_begin_long_select">开始长选</string>
   <string name="idepref_editor_stickScroll_title">粘滞滚动</string>
   <string name="idepref_editor_stickyScroll_summary">滚动编辑器时在顶部显示当前范围。</string>
+  
   <string name="idepref_launchAppAfterInstall_title">安装后启动应用</string>
   <string name="idepref_launchAppAfterInstall_summary">如果启用，IDE 安装应用程序后，将（不经确认）立即启动该应用程序。</string>
   <string name="title_run_options">运行选项</string>

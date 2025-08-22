@@ -25,6 +25,9 @@
   <string name="ide_logs">IDE Logs</string>
   <!-- AndroidIDE-R -->
   <string name="discussions_on_qq">Discussions on QQ</string>
+  <string name="idepref_installViaShizuku_title">Install Via Shizuku</string>
+  <string name="idepref_installViaShizuku_summary">If enabled, the IDE will perform silent installation via Shizuku. Please make sure Shizuku is installed and activated.</string>
+
 
   <!-- LSP, Diagnostics & Completions -->
   <string name="get_started">Get started</string>

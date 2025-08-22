@@ -68,6 +68,8 @@ import org.slf4j.LoggerFactory
 import java.lang.Thread.UncaughtExceptionHandler
 import java.time.Duration
 import kotlin.system.exitProcess
+import io.github.miyazkaori.silentinstaller.SilentInstaller
+import android.content.Context
 
 
 class IDEApplication : TermuxApplication() {
@@ -82,6 +84,12 @@ class IDEApplication : TermuxApplication() {
 
     RecyclableObjectPool.DEBUG = BuildConfig.DEBUG
   }
+  
+  override fun attachBaseContext(base: Context) {
+    super.attachBaseContext(base)
+    SilentInstaller.init(this)
+  }
+
 
   @OptIn(DelicateCoroutinesApi::class)
   override fun onCreate() {

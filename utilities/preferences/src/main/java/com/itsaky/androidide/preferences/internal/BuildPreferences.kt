@@ -35,6 +35,7 @@ object BuildPreferences {
   const val GRADLE_CLEAR_CACHE = "idepref_build_gradleClearCache"
   const val CUSTOM_GRADLE_INSTALLATION = "idepref_build_customGradleInstallation"
   const val LAUNCH_APP_AFTER_INSTALL = "ide.build.run.launchAppAfterInstall"
+  const val INSTALL_VIA_SHIZUKU = "ide.build.run.installViaShizuku"
   const val PREF_JAVA_HOME = "ide.build.javaHome"
 
   /** Switch for Gradle `--debug` option. */
@@ -97,9 +98,15 @@ object BuildPreferences {
    * Whether the app should be launched automatically after installation (after build).
    */
   var launchAppAfterInstall: Boolean
-    get() = prefManager.getBoolean(LAUNCH_APP_AFTER_INSTALL, false)
+    get() = prefManager.getBoolean(LAUNCH_APP_AFTER_INSTALL, true)
     set(value) {
       prefManager.putBoolean(LAUNCH_APP_AFTER_INSTALL, value)
+    }
+  
+  var installViaShizuku: Boolean
+    get() = prefManager.getBoolean(INSTALL_VIA_SHIZUKU, false)
+    set(value) {
+      prefManager.putBoolean(INSTALL_VIA_SHIZUKU, value)
     }
 
   /**

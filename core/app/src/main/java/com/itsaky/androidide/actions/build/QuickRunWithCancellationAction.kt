@@ -45,6 +45,15 @@ import kotlinx.coroutines.withContext
 import org.slf4j.LoggerFactory
 import java.io.File
 
+import com.itsaky.androidide.app.BaseApplication
+import com.itsaky.androidide.managers.PreferenceManager
+import io.github.miyazkaori.silentinstaller.SilentInstaller
+import com.itsaky.androidide.actions.openApplicationModuleChooser
+import com.itsaky.androidide.utils.IntentUtils
+import com.itsaky.androidide.ui.InstallingDialog
+
+const val INSTALL_VIA_SHIZUKU = "ide.build.run.installViaShizuku"
+  
 /**
  * The 'Quick Run' and 'Cancel build' action in the editor activity.
  *
@@ -55,6 +64,9 @@ import java.io.File
  */
 class QuickRunWithCancellationAction(context: Context, override val order: Int) :
   BaseBuildAction() {
+  
+  private val prefManager: PreferenceManager
+  get() = BaseApplication.getBaseInstance().prefManager
 
   companion object {
 
@@ -236,7 +248,7 @@ class QuickRunWithCancellationAction(context: Context, override val order: Int) 
       log.error("APK file specified in output listing file does not exist! {}", apkFile)
       return
     }
-
+    
     install(data, apkFile)
   }
 
@@ -247,14 +259,69 @@ class QuickRunWithCancellationAction(context: Context, override val order: Int) 
           log.error("Cannot install APK. Unable to get activity instance.")
           return
         }
+        
+          if (!apk.exists()) {
+        log.error("APK file does not exist!")
+        return
+      }
+      
+            log.debug("Installing APK: {}", apk)
+      
+          if (prefManager.getBoolean(INSTALL_VIA_SHIZUKU, false)) {
+          var installingDialog: InstallingDialog? = null
+          activity.runOnUiThread{
+            installingDialog = InstallingDialog.create(activity, "Installing…")
+            installingDialog?.show()
+          }
+        
+        log.info("Installing APK via shizuku: {}", apk)
+        SilentInstaller.install(apk, object : SilentInstaller.InstallCallback {
+            override fun onPermissionDenied() {
+                activity.runOnUiThread {
+                installingDialog?.dismiss()
+                flashError("Permission denied")
+                }
+            }
+    
+            override fun onSuccess(status: Int, message: String) {
+                activity.runOnUiThread{installingDialog?.dismiss()}
+                  openApplicationModuleChooser(data) { app ->
+                      val variant = app.getSelectedVariant()
+                
+                      log.debug("Selected variant: {}", variant?.name)
+                
+                      if (variant == null) {
+                        activity.runOnUiThread{flashError("Selected build variant not found")}
+                        return@openApplicationModuleChooser
+                      }
+                
+                      val applicationId = variant.mainArtifact.applicationId
+                      if (applicationId == null) {
+                        log.error("Unable to launch application. variant.mainArtifact.applicationId is null")
+                        activity.runOnUiThread{flashError("Cannot run application. Unable to determine package name.")}
+                        return@openApplicationModuleChooser
+                      }
+                
+                      log.info("Launching application: {}", applicationId)
+                
+                      
+                      IntentUtils.launchApp(data.requireActivity(), applicationId, logError = false)
+                }
+            }
+    
+            override fun onFailure(status: Int, message: String, tr: Throwable?) {
+                activity.runOnUiThread{
+                installingDialog?.dismiss()
+                flashError("Install failure: $message")
+                }
+                log.error(message)
+            }
+        })
+        
+        return
+    }
 
     activity.runOnUiThread {
-      log.debug("Installing APK: {}", apk)
-
-      if (!apk.exists()) {
-        log.error("APK file does not exist!")
-        return@runOnUiThread
-      }
 
       ApkInstaller.installApk(
         activity,
@@ -262,8 +329,9 @@ class QuickRunWithCancellationAction(context: Context, override val order: Int) 
         apk,
         activity.installationSessionCallback()
       )
+     }
     }
-  }
+  
 
   private fun ActionData.isBuildInProgress(): Boolean {
     val context = getActivity()

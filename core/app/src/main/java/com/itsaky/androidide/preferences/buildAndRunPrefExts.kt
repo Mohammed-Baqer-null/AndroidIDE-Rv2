@@ -28,6 +28,7 @@ import com.itsaky.androidide.preferences.internal.BuildPreferences.CUSTOM_GRADLE
 import com.itsaky.androidide.preferences.internal.BuildPreferences.GRADLE_CLEAR_CACHE
 import com.itsaky.androidide.preferences.internal.BuildPreferences.GRADLE_COMMANDS
 import com.itsaky.androidide.preferences.internal.BuildPreferences.LAUNCH_APP_AFTER_INSTALL
+import com.itsaky.androidide.preferences.internal.BuildPreferences.INSTALL_VIA_SHIZUKU
 import com.itsaky.androidide.preferences.internal.BuildPreferences.PREF_JAVA_HOME
 import com.itsaky.androidide.preferences.internal.BuildPreferences.gradleInstallationDir
 import com.itsaky.androidide.preferences.internal.BuildPreferences.isBuildCacheEnabled
@@ -39,6 +40,7 @@ import com.itsaky.androidide.preferences.internal.BuildPreferences.isStacktraceE
 import com.itsaky.androidide.preferences.internal.BuildPreferences.isWarningModeAllEnabled
 import com.itsaky.androidide.preferences.internal.BuildPreferences.javaHome
 import com.itsaky.androidide.preferences.internal.BuildPreferences.launchAppAfterInstall
+import com.itsaky.androidide.preferences.internal.BuildPreferences.installViaShizuku
 import com.itsaky.androidide.resources.R.drawable
 import com.itsaky.androidide.resources.R.string
 import com.itsaky.androidide.tasks.executeAsync
@@ -162,9 +164,19 @@ private class RunOptions(
 ) : IPreferenceGroup() {
 
   init {
+    addPreference(InstallViaShizuku())
     addPreference(LaunchAppAfterInstall())
   }
 }
+
+@Parcelize
+private class InstallViaShizuku(
+  override val key: String = INSTALL_VIA_SHIZUKU,
+  override val title: Int = R.string.idepref_installViaShizuku_title,
+  override val summary: Int? = R.string.idepref_installViaShizuku_summary,
+  override val icon: Int? = drawable.ic_apk_install
+) :
+  SwitchPreference(setValue = ::installViaShizuku::set, getValue = ::installViaShizuku::get)
 
 @Parcelize
 private class LaunchAppAfterInstall(
