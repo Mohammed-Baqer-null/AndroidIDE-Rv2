@@ -55,20 +55,7 @@ val Project.simpleVersionName: String
 
 private var shouldPrintVersionCode = true
 val Project.projectVersionCode: Int
-  get() {
-    val baseVersionCode = 271
-    
-    val commitCount = System.getenv("IDE_COMMIT_COUNT")
-
-    val versionCode = "$baseVersionCode$commitCount".toInt()
-    
-    if (shouldPrintVersionCode) {
-      logger.warn("Version code is '$versionCode")
-      shouldPrintVersionCode = false
-    }
-    
-    return versionCode
-  }
+  get() = 2710
   
 /**
  * The version name which is used to download the artifacts at runtime.
