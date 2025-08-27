@@ -1,4 +1,5 @@
 #!/bin/bash
+# Modified by Mohammed-baqer-null @ https://github.com/Mohammed-baqer-null
 
 set -eu
 
@@ -21,6 +22,46 @@ pkgm="pkg"
 pkg_curl="libcurl"
 pkgs="jq tar"
 jdk_version="17"
+
+npr() {
+    local TAG="$Green[ NDK SETUP ]$Color_Off"
+    echo -e "$TAG $1"
+}
+
+ensure_ndk() {
+    local ndkVersion="27.1.12297006"
+    [ ! -f "$HOME/android-sdk/ndk/$ndkVersion/ndk-build" ] && {
+        return 1
+    }
+    return 0
+}
+
+setup_ndk() {
+    local ndkUrl="https://github.com/Mohammed-Baqer-null/AndroidIDE-Rv2-ndk/releases/download/v27.1.12297006/android-ndk-r27b-aarch64.zip"
+    # clear terminal screen 
+    clear
+    
+    if is_yes $'\033[0;32m[ NDK SETUP ]\033[0m Would you like to install and setup Android NDK'; then
+        # Ensuing ndk dir exists in android-sdk
+        [ ! -d "$HOME/android-sdk/ndk" ] && {
+            mkdir -p "$HOME/android-sdk/ndk"
+        }
+        # check if the ndk already exists
+        if ! ensure_ndk; then
+            download_and_extract "Downloading android ndk..." \
+            $ndkUrl \
+            "$HOME/android-sdk/ndk" \
+            "$HOME/ndk.zip" \
+            "unzip"
+        else
+            npr "Ndk already downloaded"
+        fi
+    else
+        npr "Canceled"
+    fi
+    
+    
+}
 
 print_info() {
   # shellcheck disable=SC2059
@@ -127,6 +168,8 @@ download_and_extract() {
 
   # Destination path for downloading the file
   dest=$4
+  
+  extract_with=$5
 
   if [ ! -d "$dir" ]; then
     mkdir -p "$dir"
@@ -157,9 +200,13 @@ download_and_extract() {
   fi
 
   # Extract the downloaded archive
-  print_info "Extracting downloaded archive..."
-  tar xvJf "$dest" && print_info "Extracted successfully"
-
+  if [[ "$extract_with" == "xz" ]]; then
+    print_info "Extracting downloaded archive with xz..."
+    tar xvJf "$dest" && print_info "Extracted successfully"
+  else
+    print_info "Extracting downloaded archive with unzip..."
+    unzip "$dest" && print_info "Extracted successfully"
+  fi
   echo ""
 
   # Delete the downloaded file
@@ -182,7 +229,7 @@ download_comp() {
   echo ""
 
   # Download and extract the Android SDK build tools
-  download_and_extract "$nm" "$url" "$mdir" "$mdir/$dname.tar.xz"
+  download_and_extract "$nm" "$url" "$mdir" "$mdir/$dname.tar.xz" "xz"
 }
 
 ## NOTE!
@@ -368,6 +415,8 @@ else
     print_err "Manually edit $SYSROOT/etc/ide-environment.properties file and set JAVA_HOME and ANDROID_SDK_ROOT."
   fi
 fi
+
+setup_ndk
 
 rm -vf "$downloaded_manifest"
 print_success "Downloads completed. You are ready to go!"
