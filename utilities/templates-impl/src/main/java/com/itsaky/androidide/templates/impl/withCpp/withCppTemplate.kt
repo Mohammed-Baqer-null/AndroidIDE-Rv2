@@ -42,6 +42,7 @@ fun withCppProject(): ProjectTemplate = baseProjectImpl {
       res {
         writeEmptyActivity()
       }
+      writeEmptyJniActivity()
     }
   }
 }

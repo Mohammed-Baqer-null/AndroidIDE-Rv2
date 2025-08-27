@@ -18,5 +18,5 @@
 <resources>
   <!--  Required by F-Droid-->
   <!-- <string name="app_name" translatable="false">AndroidIDE</string> -->
-  <string name="app_name" translatable="false">AndroidIDE-R</string>
+  <string name="app_name" translatable="false">AndroidIDE-Rv2</string>
 </resources>

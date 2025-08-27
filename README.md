@@ -39,7 +39,6 @@
 
 - [x] Gradle support.
 - [x] `JDK 11` and `JDK 17` available for use.
-- [x] 🆕 NDK support (Currently implementing it...)
 - [x] Terminal with necessary packages.
 - [x] Custom environment variables (for Build & Terminal).
 - [x] SDK Manager (Available via terminal).
