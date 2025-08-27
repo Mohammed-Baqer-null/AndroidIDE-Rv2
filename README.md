@@ -12,8 +12,6 @@
 <img src="https://img.shields.io/github/v/release/Mohammed-baqer-null/AndroidIDE-Rv2?include_prereleases&amp;label=latest%20release" alt="Latest release">
 <!-- Build and test -->
 <img src="https://github.com/Mohammed-baqer-null/AndroidIDE-Rv2/actions/workflows/asm_build.yml/badge.svg" alt="Builds and tests">
-<!-- CodeFactor -->
-<img src="https://www.codefactor.io/repository/github/Mohammed-baqer-null/AndroidIDE-Rv2/badge/main" alt="CodeFactor">
 <!-- Crowdin -->
 <a href="https://crowdin.com/project/androidide"><img src="https://badges.crowdin.net/androidide/localized.svg" alt="Crowdin"></a>
 <!-- License -->
