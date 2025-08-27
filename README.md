@@ -13,7 +13,7 @@
 <!-- Build and test -->
 <img src="https://github.com/Mohammed-baqer-null/AndroidIDE-Rv2/actions/workflows/asm_build.yml/badge.svg" alt="Builds and tests">
 <!-- CodeFactor -->
-<img src="https://www.codefactor.io/repository/github/androidideofficial/androidide/badge/main" alt="CodeFactor">
+<img src="https://www.codefactor.io/repository/github/Mohammed-baqer-null/AndroidIDE-Rv2/badge/main" alt="CodeFactor">
 <!-- Crowdin -->
 <a href="https://crowdin.com/project/androidide"><img src="https://badges.crowdin.net/androidide/localized.svg" alt="Crowdin"></a>
 <!-- License -->
@@ -24,8 +24,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/AndroidIDEOfficial/AndroidIDE/issues/new?labels=bug&template=BUG.yml&title=%5BBug%5D%3A+">Report a bug</a> &nbsp; &#8226; &nbsp;
-  <a href="https://github.com/AndroidIDEOfficial/AndroidIDE/issues/new?labels=feature&template=FEATURE.yml&title=%5BFeature%5D%3A+">Request a feature</a> &nbsp; &#8226; &nbsp;
+  <a href="https://github.com/Mohammed-baqer-null/AndroidIDE-Rv2/issues/new?labels=bug&template=BUG.yml&title=%5BBug%5D%3A+">Report a bug</a> &nbsp; &#8226; &nbsp;
+  <a href="https://github.com/Mohammed-baqer-null/AndroidIDE-Rv2/issues/new?labels=feature&template=FEATURE.yml&title=%5BFeature%5D%3A+">Request a feature</a> &nbsp; &#8226; &nbsp;
   <a href="https://t.me/androidide_discussions">Join us on Telegram</a>
 </p>
 
@@ -66,12 +66,12 @@
     height="80">](https://f-droid.org/packages/com.itsaky.androidide)
 [<img src="https://github.com/Kunzisoft/Github-badge/raw/main/get-it-on-github.svg"
     alt="Get it on F-Droid"
-    height="80">](https://github.com/AndroidIDEOfficial/AndroidIDE/releases)
+    height="80">](https://github.com/Mohammed-baqer-null/AndroidIDE-Rv2/releases)
 
 > _Please install AndroidIDE from trusted sources only i.e._
 > > - [_The AndroidIDE website_](https://androidide.com)
-> - [_GitHub Releases_](https://github.com/AndroidIDEOfficial/AndroidIDE/releases)
-> - [_GitHub Actions_](https://github.com/AndroidIDEOfficial/AndroidIDE/actions?query=branch%3Adev+event%3Apush)
+> - [_GitHub Releases_](https://github.com/Mohammed-baqer-null/AndroidIDE-Rv2/releases)
+> - [_GitHub Actions_](https://github.com/Mohammed-baqer-null/AndroidIDE-Rv2/actions?query=branch%3Adev+event%3Apush)
 > - [_F-Droid_](https://f-droid.org/packages/com.itsaky.androidide/)
 
 - Download the AndroidIDE APK from the mentioned trusted sources.
