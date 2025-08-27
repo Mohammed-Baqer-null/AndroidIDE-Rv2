@@ -28,6 +28,7 @@ package ${data.packageName}
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import ${data.packageName}.databinding.ActivityMainBinding
 
 public class MainActivity : AppCompatActivity() {
@@ -37,10 +38,14 @@ public class MainActivity : AppCompatActivity() {
             System.loadLibrary("tomaslib")
         }
     }
+    
     private var _binding: ActivityMainBinding? = null
     
     private val binding: ActivityMainBinding
       get() = checkNotNull(_binding) { "Activity has been destroyed" }
+    
+    // Native method declaration
+    external fun sayHello(): String
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +55,10 @@ public class MainActivity : AppCompatActivity() {
 
         // set content view to binding's root
         setContentView(binding.root)
+        
+        // Call native method and show toast
+        val message = sayHello()
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
     
     override fun onDestroy() {
@@ -66,6 +75,7 @@ package ${data.packageName};
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 import ${data.packageName}.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -74,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private ActivityMainBinding binding;
+    
+    // Native method declaration
+    public native String sayHello();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +97,10 @@ public class MainActivity extends AppCompatActivity {
 
         // set content view to binding's root
         setContentView(binding.getRoot());
+        
+        // Call native method and show toast
+        String message = sayHello();
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
     
     @Override

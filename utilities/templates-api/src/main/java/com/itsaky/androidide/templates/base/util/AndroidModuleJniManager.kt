@@ -43,7 +43,10 @@ class AndroidModuleJniManager {
    * @param srcSet The source set.
    */
   fun AndroidModuleTemplateBuilder.jniDir(srcSet: SrcSet = Main): File {
-    return File(File(moduleDir, "src/${srcSet.name}"), "cpp").also { it.mkdirs() }
+    val srcDir = File(data.moduleDir, "src/${srcSet.name}")
+    val jniDir = File(srcDir, "cpp")
+    jniDir.mkdirs()
+    return jniDir
   }
 
   /**
