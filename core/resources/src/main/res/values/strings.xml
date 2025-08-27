@@ -81,6 +81,7 @@
   <string name="msg_confirm_project_close">Are you sure you want to close this project? All started Gradle daemons will be stopped after this project is closed.</string>
   <string name="template_basic">Basic Project</string>
   <string name="template_empty">Empty project</string>
+  <string name="template_cpp">C++ project</string>
   <string name="template_navigation_drawer">Navigation drawer project</string>
   <string name="template_compose" translatable="false">Jetpack Compose</string>
   <string name="template_navigation_tabs">Bottom Navigation Activity</string>

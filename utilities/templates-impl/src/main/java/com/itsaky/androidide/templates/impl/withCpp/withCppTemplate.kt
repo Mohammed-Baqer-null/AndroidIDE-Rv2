@@ -29,8 +29,8 @@ import com.itsaky.androidide.templates.impl.base.writeMainActivity
 import com.itsaky.androidide.templates.impl.baseProjectImpl
 
 fun withCppProject(): ProjectTemplate = baseProjectImpl {
-  templateName = R.string.template_empty
-  thumb = R.drawable.template_empty_activity
+  templateName = R.string.template_cpp
+  thumb = R.drawable.template_cpp_activity
   defaultAppModule {
     recipe = createRecipe {
       sources {
