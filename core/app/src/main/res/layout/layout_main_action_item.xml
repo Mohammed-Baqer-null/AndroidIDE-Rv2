@@ -34,6 +34,7 @@
         android:layout_height="56dp"
         android:elevation="0dp"
         android:ellipsize="end"
+        android:id="@+id/actionButton"
         android:singleLine="true"
         android:textAlignment="textStart"
         android:textColor="?attr/colorOnBackground"
