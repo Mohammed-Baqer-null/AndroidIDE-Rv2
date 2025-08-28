@@ -69,7 +69,7 @@ jobs:
         run: ./gradlew :core:app:assembleDebug
         # run: ./gradlew :core:app:assembleRelease
       - name: List APK files (debug)
-        run: ls -la core/app/build/outputs/apk/release/
+        run: ls -la core/app/build/outputs/apk/debug/
       - name: Upload arm64-v8a Release APK
         uses: actions/upload-artifact@v4
         with:
