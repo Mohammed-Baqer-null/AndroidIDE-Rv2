@@ -58,10 +58,10 @@ val Project.projectVersionCode: Int
   get() {
     val baseVersionCode = 271
     
-    val versionCode = "$baseVersionCode"
+    val versionCode = baseVersionCode
     
     if (shouldPrintVersionCode) {
-      logger.warn("Version code is '$versionCode")
+      logger.warn("Version code is '$versionCode'")
       shouldPrintVersionCode = false
     }
     
