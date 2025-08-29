@@ -2,7 +2,7 @@
   <img src="./images/icon.png" alt="AndroidIDE" width="80" height="80"/>
 </p>
 
-<h2 align="center"><b>AndroidIDE</b></h2>
+<h2 align="center"><b>AndroidIDE-Rv2</b></h2>
 <p align="center">
   An IDE to develop real, Gradle-based Android applications on Android devices.
 <p><br>

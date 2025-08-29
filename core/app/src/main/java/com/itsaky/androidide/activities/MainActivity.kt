@@ -75,6 +75,9 @@ class MainActivity : EdgeToEdgeIDEActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    tomIDEUpdater = TomIDEUpdater(this)    
+    tomIDEUpdater.checkForUpdates()
+
     openLastProject()
 
     viewModel.currentScreen.observe(this) { screen ->
@@ -201,6 +204,7 @@ class MainActivity : EdgeToEdgeIDEActivity() {
   }
 
   override fun onDestroy() {
+    tomIDEUpdater.cancelDownload()
     ITemplateProvider.getInstance().release()
     super.onDestroy()
     _binding = null

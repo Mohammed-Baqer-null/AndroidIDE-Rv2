@@ -24,8 +24,8 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="4dp"
     android:layout_marginBottom="4dp"
-    app:cardElevation="2dp"
-    app:cardCornerRadius="8dp"
+    app:cardElevation="1dp"
+    app:cardCornerRadius="24dp"
     app:strokeWidth="0dp">
 
     <com.google.android.material.button.MaterialButton
