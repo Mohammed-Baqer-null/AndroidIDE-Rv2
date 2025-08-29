@@ -112,7 +112,7 @@ object EditorPreferences {
       prefManager.putBoolean(FONT_LIGATURES, value)
     }
     
-  var autoSave: Boolean
+  var autoSave_two: Boolean
     get() = prefManager.getBoolean(AUTO_SAVE_TWO, true)
     set(value) {
       prefManager.putBoolean(AUTO_SAVE_TWO, value)

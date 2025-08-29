@@ -146,8 +146,8 @@ private class autoSave(
   override val title: Int = string.idepref_editor_autosave_title,
   override val summary: Int? = string.idepref_editor_autosave_summary,
   override val icon: Int? = drawable.ic_save,
-) : SwitchPreference(setValue = EditorPreferences::autoSave::set,
-  getValue = EditorPreferences::autoSave::get)
+) : SwitchPreference(setValue = EditorPreferences::autoSave_two::set,
+  getValue = EditorPreferences::autoSave_two::get)
 
 
 @Parcelize
