@@ -256,37 +256,8 @@ abstract class BaseEditorActivity : EdgeToEdgeIDEActivity(), TabLayout.OnTabSele
    * Save a file. Subclasses can override this method to implement custom saving logic.
    * Default implementation attempts to save using the editor's save functionality.
    */
-    protected open fun doSaveFile(editor: CodeEditorView): Boolean {
-      return try {
-        val file = editor.file ?: return false
-        
-        val actionData = ActionData().apply {
-          put(Context::class.java, this@BaseEditorActivity)
-        }
-        
-        val saveAction = SaveFileAction(this, 0)
-        saveAction.prepare(actionData)
-        
-        if (!saveAction.enabled) {
-          log.debug("SaveFileAction is not enabled for file: ${file.absolutePath}")
-          return false
-        }
-        
-        val result = kotlinx.coroutines.runBlocking {
-          saveAction.execAction(actionData)
-        }
-        
-        ThreadUtils.runOnUiThread {
-          saveAction.postExec(actionData, result)
-        }
-        
-        val wrapper = result as? SaveFileAction.ResultWrapper
-        wrapper?.result != null && !wrapper.isAlreadySaving
-      } catch (e: Exception) {
-        log.error("Failed to save file using SaveFileAction: ${editor.file?.absolutePath}", e)
-        false
-      }
-    }
+    protected abstract fun doSaveFile(editor: CodeEditorView): Boolean
+
 
   /**
    * Check if auto-save is enabled in preferences
@@ -296,69 +267,69 @@ abstract class BaseEditorActivity : EdgeToEdgeIDEActivity(), TabLayout.OnTabSele
   }
 
   /**
-   * Auto-save TextWatcher implementation - Alternative approach using content hash checking
+   * Auto-save TextWatcher implementation
    */
-  private fun checkForContentChanges() {
-    if (!isAutoSaveEnabled() || isDestroying) {
-      return
-    }
-
-    val openedFiles = getOpenedFiles()
-    for (i in openedFiles.indices) {
-      val editor = provideEditorAt(i)
-      if (editor?.file != null) {
-        try {
-          val currentContent = editor.editor?.text?.toString() ?: ""
-          val currentHash = currentContent.hashCode()
-          val lastHash = editorContentHashes[editor] ?: 0
-          
-          if (currentHash != lastHash && currentContent.isNotEmpty()) {
-            // Content has changed
-            editorContentHashes[editor] = currentHash
-            val file = editor.file!!
-            if (file.exists() && file.canWrite()) {
-              pendingSaveFiles[file] = true
-              log.debug("Content changed, marked for auto-save: ${file.absolutePath}")
+    private fun checkForContentChanges() {
+      if (!isAutoSaveEnabled() || isDestroying) {
+        return
+      }
+    
+      val openedFiles = getOpenedFiles()
+      for (i in openedFiles.indices) {
+        val editor = provideEditorAt(i) ?: continue
+        if (editor.file != null) {
+          try {
+            val currentContent = editor.editor?.text?.toString() ?: ""
+            val currentHash = currentContent.hashCode()
+            val lastHash = editorContentHashes[editor] ?: 0
+            
+            if (currentHash != lastHash && currentContent.isNotEmpty()) {
+              // Content has changed
+              editorContentHashes[editor] = currentHash
+              val file = editor.file!!
+              if (file.exists() && file.canWrite()) {
+                pendingSaveFiles[file] = true
+                log.debug("Content changed, marked for auto-save: ${file.absolutePath}")
+              }
             }
+          } catch (e: Exception) {
+            log.error("Error checking content changes for file: ${editor.file?.absolutePath}", e)
           }
-        } catch (e: Exception) {
-          log.error("Error checking content changes for file: ${editor.file?.absolutePath}", e)
         }
       }
     }
-  }
 
   /**
    * Start auto-save mechanism
    */
-  private fun startAutoSave() {
-    if (autoSaveCoroutineJob?.isActive == true) {
-      return
-    }
-
-    autoSaveCoroutineJob = editorActivityScope.launch {
-      while (!isDestroying) {
-        try {
-          delay(AUTO_SAVE_DELAY_MS)
-          
-          if (isAutoSaveEnabled() && !isDestroying) {
-            // Check for content changes
-            ThreadUtils.runOnUiThread {
-              checkForContentChanges()
-            }
+    private fun startAutoSave() {
+      if (autoSaveCoroutineJob?.isActive == true) {
+        return
+      }
+    
+      autoSaveCoroutineJob = editorActivityScope.launch {
+        while (!isDestroying) {
+          try {
+            delay(AUTO_SAVE_DELAY_MS)
             
-            // Perform auto-save for pending files
-            delay(100) // Small delay to let the content check complete
-            performAutoSave()
+            if (isAutoSaveEnabled() && !isDestroying) {
+              // Check for content changes on UI thread
+              withContext(Dispatchers.Main) {
+                checkForContentChanges()
+              }
+              
+              // Perform auto-save for pending files
+              delay(100) // Small delay to let the content check complete
+              performAutoSave()
+            }
+          } catch (e: Exception) {
+            log.error("Error in auto-save coroutine", e)
           }
-        } catch (e: Exception) {
-          log.error("Error in auto-save coroutine", e)
         }
       }
+      
+      log.debug("Auto-save mechanism started")
     }
-    
-    log.debug("Auto-save mechanism started")
-  }
 
   /**
    * Stop auto-save mechanism
