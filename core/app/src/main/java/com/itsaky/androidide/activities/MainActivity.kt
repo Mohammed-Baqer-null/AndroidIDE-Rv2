@@ -41,6 +41,7 @@ import com.itsaky.androidide.viewmodel.MainViewModel
 import com.itsaky.androidide.viewmodel.MainViewModel.Companion.SCREEN_MAIN
 import com.itsaky.androidide.viewmodel.MainViewModel.Companion.SCREEN_TEMPLATE_DETAILS
 import com.itsaky.androidide.viewmodel.MainViewModel.Companion.SCREEN_TEMPLATE_LIST
+import com.itsaky.androidide.activities.TomIDEUpdater
 import java.io.File
 
 class MainActivity : EdgeToEdgeIDEActivity() {
