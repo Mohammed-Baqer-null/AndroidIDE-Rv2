@@ -8,9 +8,12 @@ import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import android.util.Log
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.FileProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.progressindicator.LinearProgressIndicator
 import kotlinx.coroutines.*
 import org.json.JSONObject
 import java.io.*
@@ -34,6 +37,9 @@ class TomIDEUpdater(private val context: Context) {
     )
     
     private var downloadJob: Job? = null
+    private var progressDialog: androidx.appcompat.app.AlertDialog? = null
+    private var progressIndicator: LinearProgressIndicator? = null
+    private var progressText: TextView? = null
     
     fun checkForUpdates() {
         CoroutineScope(Dispatchers.IO).launch {
@@ -186,10 +192,13 @@ class TomIDEUpdater(private val context: Context) {
             return
         }
         
+        showProgressDialog()
+        
         downloadJob = CoroutineScope(Dispatchers.IO).launch {
             try {
                 val apkFile = downloadApk(apkUrl)
                 withContext(Dispatchers.Main) {
+                    hideProgressDialog()
                     if (apkFile != null) {
                         installApk(apkFile)
                     } else {
@@ -199,6 +208,7 @@ class TomIDEUpdater(private val context: Context) {
             } catch (e: Exception) {
                 Log.e(TAG, "Error downloading APK", e)
                 withContext(Dispatchers.Main) {
+                    hideProgressDialog()
                     Toast.makeText(context, "Download failed: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -231,28 +241,23 @@ class TomIDEUpdater(private val context: Context) {
                 var totalBytes = 0
                 var bytesRead: Int
                 
-                withContext(Dispatchers.Main) {
-                    Toast.makeText(context, "Downloading update...", Toast.LENGTH_SHORT).show()
-                }
-                
                 while (inputStream.read(buffer).also { bytesRead = it } != -1) {
                     outputStream.write(buffer, 0, bytesRead)
                     totalBytes += bytesRead
                     
                     if (contentLength > 0) {
                         val progress = (totalBytes * 100) / contentLength
+                        val progressMB = totalBytes / (1024 * 1024)
+                        val totalMB = contentLength / (1024 * 1024)
+                        
                         withContext(Dispatchers.Main) {
-                            // You can show progress here if needed
+                            updateProgress(progress, "$progressMB MB / $totalMB MB")
                         }
                     }
                 }
                 
                 inputStream.close()
                 outputStream.close()
-                
-                withContext(Dispatchers.Main) {
-                    Toast.makeText(context, "Download completed", Toast.LENGTH_SHORT).show()
-                }
                 
                 apkFile
             } catch (e: Exception) {
@@ -314,7 +319,55 @@ class TomIDEUpdater(private val context: Context) {
         }
     }
     
-    private fun openInBrowser(url: String) {
+    private fun showProgressDialog() {
+        val dialogView = LinearLayout(context).apply {
+            orientation = LinearLayout.VERTICAL
+            setPadding(64, 32, 64, 32)
+        }
+        
+        val titleText = TextView(context).apply {
+            text = "Downloading Update"
+            textSize = 18f
+            setPadding(0, 0, 0, 24)
+        }
+        
+        progressIndicator = LinearProgressIndicator(context).apply {
+            isIndeterminate = false
+            max = 100
+            progress = 0
+        }
+        
+        progressText = TextView(context).apply {
+            text = "Preparing download..."
+            setPadding(0, 16, 0, 0)
+        }
+        
+        dialogView.addView(titleText)
+        dialogView.addView(progressIndicator)
+        dialogView.addView(progressText)
+        
+        progressDialog = MaterialAlertDialogBuilder(context)
+            .setView(dialogView)
+            .setNegativeButton("Cancel") { _, _ ->
+                cancelDownload()
+            }
+            .setCancelable(false)
+            .create()
+        
+        progressDialog?.show()
+    }
+    
+    private fun updateProgress(progress: Int, text: String) {
+        progressIndicator?.progress = progress
+        progressText?.text = text
+    }
+    
+    private fun hideProgressDialog() {
+        progressDialog?.dismiss()
+        progressDialog = null
+        progressIndicator = null
+        progressText = null
+    }
         try {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -327,6 +380,6 @@ class TomIDEUpdater(private val context: Context) {
     
     fun cancelDownload() {
         downloadJob?.cancel()
+        hideProgressDialog()
     }
 }
-
