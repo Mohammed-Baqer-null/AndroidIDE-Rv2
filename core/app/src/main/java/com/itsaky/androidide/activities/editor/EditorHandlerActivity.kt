@@ -215,9 +215,10 @@ open class EditorHandlerActivity : ProjectHandlerActivity(), IEditorHandler {
     val data = createToolbarActionData()
     val actions = getInstance().getActions(EDITOR_TOOLBAR)
     
+    // Calculate available space (rough estimate)
     val displayMetrics = resources.displayMetrics
     val screenWidth = displayMetrics.widthPixels
-    val actionButtonWidth = resources.getDimensionPixelSize(R.dimen.action_button_min_width)
+    val actionButtonWidth = (48 * displayMetrics.density).toInt()
     val maxVisibleActions = (screenWidth * 0.7 / actionButtonWidth).toInt()
     
     var visibleActionCount = 0
