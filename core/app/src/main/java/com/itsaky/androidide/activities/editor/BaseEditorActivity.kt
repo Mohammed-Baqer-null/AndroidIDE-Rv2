@@ -994,7 +994,7 @@ abstract class BaseEditorActivity : EdgeToEdgeIDEActivity(), TabLayout.OnTabSele
   private fun setupDrawers() {
     val toggle = ActionBarDrawerToggle(
       this, binding.editorDrawerLayout, content.editorToolbar,
-      "Rv2", "RV2"
+      string.app_name, string.app_name
     )
 
     binding.editorDrawerLayout.addDrawerListener(toggle)

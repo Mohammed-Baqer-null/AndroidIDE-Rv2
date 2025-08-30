@@ -5,7 +5,7 @@
   <string name="copy" tools:override="true">Copy</string>
   <string name="terminal_more">More…</string>
   <string name="text_to_search">Text to search</string>
-  <string name="app_name" translatable="false">AndroidIDE-Rv2</string>
+  <string name="app_name" translatable="false">Rv2</string>
   <string name="about_option_email">Email</string>
   <string name="about_option_website">Website</string>
   <string name="about_footer_alternate" translatable="false">AndroidIDE v\u2022 %s</string>
