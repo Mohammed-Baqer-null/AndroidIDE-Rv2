@@ -164,8 +164,8 @@ class EditorBuildEventListener : GradleBuildService.EventListener {
    * Check if the project contains native files that require NDK
    */
   private fun hasNativeFiles(projectRoot: File): Boolean {
-    val androidMkFile = File(projectRoot, "src/main/jni/Android.mk")
-    val cmakeListsFile = File(projectRoot, "src/main/jni/CMakeLists.txt")
+    val androidMkFile = File(projectRoot, "app/src/main/jni/Android.mk")
+    val cmakeListsFile = File(projectRoot, "app/src/main/jni/CMakeLists.txt")
     return androidMkFile.exists() || cmakeListsFile.exists()
   }
 
