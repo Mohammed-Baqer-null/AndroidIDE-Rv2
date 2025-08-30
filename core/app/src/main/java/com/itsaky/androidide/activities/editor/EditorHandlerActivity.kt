@@ -214,6 +214,14 @@ open class EditorHandlerActivity : ProjectHandlerActivity(), IEditorHandler {
   open fun prepareOptionsMenu(menu: Menu) {
     val data = createToolbarActionData()
     val actions = getInstance().getActions(EDITOR_TOOLBAR)
+    
+    val displayMetrics = resources.displayMetrics
+    val screenWidth = displayMetrics.widthPixels
+    val actionButtonWidth = resources.getDimensionPixelSize(R.dimen.action_button_min_width)
+    val maxVisibleActions = (screenWidth * 0.7 / actionButtonWidth).toInt()
+    
+    var visibleActionCount = 0
+    
     actions.forEach { (_, action) ->
       menu.findItem(action.itemId)?.let { item ->
         action.prepare(data)
@@ -229,7 +237,10 @@ open class EditorHandlerActivity : ProjectHandlerActivity(), IEditorHandler {
 
         var showAsAction = action.getShowAsActionFlags(data)
         if (showAsAction == -1) {
-          showAsAction = if (action.icon != null) {
+          showAsAction = if (action.icon != null && action.enabled && visibleActionCount < maxVisibleActions) {
+            visibleActionCount++
+            MenuItem.SHOW_AS_ACTION_ALWAYS
+          } else if (action.icon != null) {
             MenuItem.SHOW_AS_ACTION_IF_ROOM
           } else {
             MenuItem.SHOW_AS_ACTION_NEVER
