@@ -11,7 +11,7 @@
 <!-- Latest release -->
 <img src="https://img.shields.io/github/v/release/Mohammed-baqer-null/AndroidIDE-Rv2?include_prereleases&amp;label=latest%20release" alt="Latest release">
 <!-- Build and test -->
-<img src="https://github.com/Mohammed-baqer-null/AndroidIDE-Rv2/actions/workflows/asm_build.yml/badge.svg" alt="Builds and tests">
+<!-- <img src="https://github.com/Mohammed-baqer-null/AndroidIDE-Rv2/actions/workflows/asm_build.yml/badge.svg" alt="Builds and tests"> -->
 <!-- Crowdin -->
 <a href="https://crowdin.com/project/androidide"><img src="https://badges.crowdin.net/androidide/localized.svg" alt="Crowdin"></a>
 <!-- License -->
@@ -24,7 +24,7 @@
 <p align="center">
   <a href="https://github.com/Mohammed-baqer-null/AndroidIDE-Rv2/issues/new?labels=bug&template=BUG.yml&title=%5BBug%5D%3A+">Report a bug</a> &nbsp; &#8226; &nbsp;
   <a href="https://github.com/Mohammed-baqer-null/AndroidIDE-Rv2/issues/new?labels=feature&template=FEATURE.yml&title=%5BFeature%5D%3A+">Request a feature</a> &nbsp; &#8226; &nbsp;
-  <a href="https://t.me/androidide_discussions">Join us on Telegram</a>
+  <a href="https://t.me/rv2ide">Join us on Telegram</a>
 </p>
 
 
@@ -115,7 +115,7 @@ Thanks to all the developers who have contributed to this project.
 ## Contact Us
 
 - [Website](https://m.androidide.com)
-- [Telegram](https://t.me/androidide_discussions)
+- [Telegram](https://t.me/rv2ide)
 
 ## License
 
